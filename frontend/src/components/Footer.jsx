@@ -2,9 +2,9 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div className='w-full mt-4'>
+    <div className='w-full mt-30'>
       <div className='flex flex-col items-center'>
-        <div className='flex w-full max-w-4xl justify-between mb-4'>
+        <div className='flex w-full max-w-4xl justify-between'>
           <a href='#' className='text-[#4A709C] text-lg'>Terms of Service</a>
           <a href='#' className='text-[#4A709C] text-lg'>Privacy Policy</a>
           <a href='#' className='text-[#4A709C] text-lg'>Contact Us</a>

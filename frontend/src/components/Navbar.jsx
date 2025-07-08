@@ -104,7 +104,7 @@ function Navbar() {
               Sign Up
             </button>
             <button
-              onClick={() => navigate('/login')}
+              onClick={() => navigate('/signin')}
               className="bg-gray-100 text-black font-semibold px-6 py-2 rounded-lg hover:bg-gray-200 transition"
             >
               Log In
@@ -196,7 +196,7 @@ function Navbar() {
                     Sign Up
                   </button>
                   <button
-                    onClick={() => { setIsMenuOpen(false); navigate('/login'); }}
+                    onClick={() => { setIsMenuOpen(false); navigate('/signin'); }}
                     className="bg-gray-100 text-black font-semibold px-6 py-2 rounded-lg hover:bg-gray-200 transition w-full"
                   >
                     Log In

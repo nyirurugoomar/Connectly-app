@@ -7,6 +7,8 @@ import Services from './pages/Services'
 import AboutUs from './pages/AboutUs'
 import Contant from './pages/Contant'
 import Footer from './components/Footer'
+import SignIn from './pages/SignIn'
+import SignUp from './pages/SignUp'
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/contact" element={<Contant />} />
         <Route path="/my-profile" element={<MyProfile />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
       <Footer/>
     </div>
