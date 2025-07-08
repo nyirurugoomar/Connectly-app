@@ -1,32 +1,15 @@
 import React, { useState } from "react";
 import { assets } from "../assets/assets";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function Navbar() {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // DEV: Toggle this to true/false to simulate login state
-  const isLoggedIn = false; // set to true to simulate logged in, false for logged out
-
-  let username = "";
-  if (isLoggedIn) {
-    username = "Omar"; // or any test name
-  }
-  // --- original localStorage logic below (commented out for now) ---
-  // const authData = localStorage.getItem("auth");
-  // if (authData) {
-  //   try {
-  //     const parsed = JSON.parse(authData);
-  //     if (parsed && parsed.user && parsed.user.username) {
-  //       username = parsed.user.username;
-  //     }
-  //   } catch (e) {
-  //     username = "";
-  //   }
-  // }
+  const { user, isAuthenticated, logout } = useAuth();
 
   const handleLogout = () => {
-    localStorage.removeItem("auth");
+    logout();
     navigate("/");
     setIsMenuOpen(false);
   };
@@ -46,7 +29,7 @@ function Navbar() {
       />
       
       {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-start gap-5  cursor-pointer text-black font-medium">
+      <ul className="hidden md:flex items-start gap-5 cursor-pointer text-black font-medium">
         <NavLink to="/home">
           <li className="py-1 text-[18px]">Home</li>
           <hr className="border-none outline-none h-0.5 bg-black w-3/5 m-auto hidden" />
@@ -67,10 +50,10 @@ function Navbar() {
 
       {/* Desktop Profile or Auth Buttons */}
       <div className="hidden md:flex items-center gap-4">
-        {username ? (
+        {isAuthenticated && user ? (
           // Logged in: show username and popover
           <div className="flex items-center gap-2 cursor-pointer group relative">
-            <span className="text-black font-semibold">{username}</span>
+            <span className="text-black font-semibold">{user.fullName}</span>
             <img
               className="w-8 h-8 rounded-full bg-white"
               src={assets.userProfile}
@@ -117,7 +100,7 @@ function Navbar() {
       <div className="md:hidden">
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="text-white p-2"
+          className="text-black p-2"
           aria-label="Toggle menu"
         >
           <svg
@@ -173,7 +156,7 @@ function Navbar() {
               </div>
 
               {/* User Profile Section or Auth Buttons */}
-              {username ? (
+              {isAuthenticated && user ? (
                 <div className="px-4 py-6 border-b border-gray-200">
                   <div className="flex items-center gap-3">
                     <img
@@ -182,7 +165,7 @@ function Navbar() {
                       alt="profile"
                     />
                     <div>
-                      <p className="text-black font-medium">{username}</p>
+                      <p className="text-black font-medium">{user.fullName}</p>
                       <p className="text-black text-sm">Welcome back!</p>
                     </div>
                   </div>
@@ -204,91 +187,63 @@ function Navbar() {
                 </div>
               )}
 
-              {/* Navigation Links */}
+              {/* Mobile Navigation Menu */}
               <nav className="flex-1 px-4 py-6">
                 <ul className="space-y-4">
                   <li>
                     <button
-                      onClick={() => handleNavigation("/home")}
-                      className="w-full text-left text-black font-medium py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors"
+                      onClick={() => handleNavigation('/home')}
+                      className="text-black text-lg font-medium w-full text-left"
                     >
                       Home
                     </button>
                   </li>
                   <li>
                     <button
-                      onClick={() => handleNavigation("/services")}
-                      className="w-full text-left text-black font-medium py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors"
+                      onClick={() => handleNavigation('/services')}
+                      className="text-black text-lg font-medium w-full text-left"
                     >
                       Services
                     </button>
                   </li>
                   <li>
                     <button
-                      onClick={() => handleNavigation("/about-us")}
-                      className="w-full text-left text-black font-medium py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors"
+                      onClick={() => handleNavigation('/about-us')}
+                      className="text-black text-lg font-medium w-full text-left"
                     >
                       About Us
                     </button>
                   </li>
                   <li>
                     <button
-                      onClick={() => handleNavigation("/contact")}
-                      className="w-full text-left text-black font-medium py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors"
+                      onClick={() => handleNavigation('/contact')}
+                      className="text-black text-lg font-medium w-full text-left"
                     >
                       Contact
                     </button>
                   </li>
-                </ul>
-              </nav>
-
-              {/* Profile Actions */}
-              {username && (
-                <div className="px-4 py-6 border-t border-gray-600">
-                  <ul className="space-y-2">
+                  {isAuthenticated && (
                     <li>
                       <button
-                        onClick={() => { setIsMenuOpen(false); navigate('/my-profile'); }}
-                        className="w-full text-left text-black font-medium py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors flex items-center gap-3"
+                        onClick={() => handleNavigation('/my-profile')}
+                        className="text-black text-lg font-medium w-full text-left"
                       >
-                        <svg
-                          className="w-5 h-5"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                          />
-                        </svg>
                         My Profile
                       </button>
                     </li>
-                    <li>
-                      <button
-                        onClick={() => { setIsMenuOpen(false); handleLogout(); }}
-                        className="w-full text-left text-red-400 font-medium py-3 px-4 rounded-lg hover:bg-red-900 hover:text-red-300 transition-colors flex items-center gap-3"
-                      >
-                        <svg
-                          className="w-5 h-5"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                          />
-                        </svg>
-                        Logout
-                      </button>
-                    </li>
-                  </ul>
+                  )}
+                </ul>
+              </nav>
+
+              {/* Logout button for mobile */}
+              {isAuthenticated && (
+                <div className="px-4 py-6 border-t border-gray-200">
+                  <button
+                    onClick={handleLogout}
+                    className="w-full bg-red-500 text-white font-semibold px-6 py-3 rounded-lg hover:bg-red-600 transition"
+                  >
+                    Logout
+                  </button>
                 </div>
               )}
             </div>

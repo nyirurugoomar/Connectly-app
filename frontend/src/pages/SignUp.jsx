@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 function SignUp() {
   return (
     <div className='flex flex-col items-center justify-center min-h-screen w-full px-4 sm:px-6 lg:px-8 py-8 gap-6 sm:gap-8 lg:gap-10 '>
@@ -29,6 +29,7 @@ function SignUp() {
           className="w-full border-2 border-gray-300  bg-[#E7E7E7] p-3 sm:p-4 outline-none rounded-[12px] text-black text-[14px] sm:text-[16px] placeholder-gray-400" />
         </div>
         <button className='bg-blue-500 text-white p-3 sm:p-4 outline-none rounded-[12px] text-[14px] sm:text-[16px] cursor-pointer'>Sign Up</button>
+        <p className='text-[#5C738A] text-sm sm:text-base text-center'>Already have an account? <Link className='font-bold' to="/signin">Sign In</Link></p>
       </form>
     </div>
   )
