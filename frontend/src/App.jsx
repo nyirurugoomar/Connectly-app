@@ -13,6 +13,7 @@ import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import UserInfo from './pages/UserInfo'
 import SelectServices from './pages/SelectServices'
+import RequestService from './pages/RequestService'
 
 function App() {
   return (
@@ -40,6 +41,11 @@ function App() {
           <Route path="/select-services" element={
             // <ProtectedRoute>
               <SelectServices />
+            // </ProtectedRoute>
+          } />
+          <Route path="/request-service" element={
+            // <ProtectedRoute>
+              <RequestService />
             // </ProtectedRoute>
           } />
         </Routes>

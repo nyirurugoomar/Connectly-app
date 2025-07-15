@@ -1,8 +1,12 @@
 import React from 'react'
+import Services from '../components/Services'
 
 function SelectServices() {
   return (
-    <div>SelectServices</div>
+    <div className='flex flex-col items-center justify-center'>
+      <h1 className='text-4xl font-bold'>Select Services</h1>
+      <Services />
+    </div>
   )
 }
 
