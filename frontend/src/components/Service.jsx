@@ -34,9 +34,10 @@ function Services() {
   };
 
   const handleNext = () => {
-    // Handle next button click - you can add navigation logic here
-    console.log('Selected service:', selectedService);
-    navigate('/request-service');
+    if(selectedService){
+        console.log('Selected service:', selectedService);
+        navigate(`/request-service/${selectedService}`);
+    }   
   };
 
   if (loading) {

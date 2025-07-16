@@ -14,6 +14,7 @@ import SignUp from './pages/SignUp'
 import UserInfo from './pages/UserInfo'
 import SelectServices from './pages/SelectServices'
 import RequestService from './pages/RequestService'
+import RequestHistory from './pages/RequestHistory'
 
 function App() {
   return (
@@ -43,9 +44,14 @@ function App() {
               <SelectServices />
             // </ProtectedRoute>
           } />
-          <Route path="/request-service" element={
+          <Route path="/request-service/:serviceId" element={
             // <ProtectedRoute>
               <RequestService />
+            // </ProtectedRoute>
+          } />
+          <Route path="/request-history" element={
+            // <ProtectedRoute>
+              <RequestHistory />
             // </ProtectedRoute>
           } />
         </Routes>
