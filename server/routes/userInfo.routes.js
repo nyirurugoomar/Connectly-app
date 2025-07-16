@@ -9,5 +9,9 @@ router.post('/', createUserInfo);
 router.get('/', getUserInfo);
 router.put('/:id', updateUserInfo);
 router.delete('/:id', deleteUserInfo);
+router.get('/me', authenticateToken, async (req, res) => {
+    const userInfo = await UserInfo.findOne({ user: req.user._id });
+    res.json(userInfo);
+});
 
 module.exports = router;

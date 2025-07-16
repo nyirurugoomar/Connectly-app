@@ -3,6 +3,7 @@ const ServiceForm = require("../models/ServiceForm");
 const createServiceForm = async (req, res) => {
   try {
     const {
+      serviceId,
       name,
       email,
       phone,
@@ -12,6 +13,7 @@ const createServiceForm = async (req, res) => {
       additionalNotes,
     } = req.body;
     if (
+      !serviceId ||
       !name ||
       !email ||
       !phone ||
@@ -24,6 +26,7 @@ const createServiceForm = async (req, res) => {
     }
     const serviceForm = await ServiceForm.create({
       user: req.user._id,
+      service: serviceId,
       name,
       email,
       phone,
@@ -33,6 +36,8 @@ const createServiceForm = async (req, res) => {
       additionalNotes,
     });
     await serviceForm.populate('user', 'fullName email role');
+    await serviceForm.populate('service', 'name description');
+
     res.status(201).json(serviceForm);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -42,7 +47,10 @@ const createServiceForm = async (req, res) => {
 const getServiceForms = async (req, res) => {
   try {
     const query = req.user.role === 'admin' ? {} : { user: req.user._id };
-    const serviceForms = await ServiceForm.find(query).populate('user', 'fullName email role');
+    const serviceForms = await ServiceForm.find(query)
+      .populate('user', 'fullName email role')
+      .populate('service', 'name description');
+    
     res.status(200).json(serviceForms);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -51,7 +59,10 @@ const getServiceForms = async (req, res) => {
 
 const getServiceFormById = async (req, res) => {
   try {
-    const serviceForm = await ServiceForm.findById(req.params.id).populate('user', 'fullName email role');
+    const serviceForm = await ServiceForm.findById(req.params.id)
+      .populate('user', 'fullName email role')
+      .populate('service', 'name description');
+      
     if (!serviceForm) {
       return res.status(404).json({ message: "Service form not found" });
     }
@@ -81,7 +92,9 @@ const updateServiceForm = async (req, res) => {
         req.params.id,
         req.body,
         { new: true }
-      ).populate('user', 'fullName email role');
+      )
+      .populate('user', 'fullName email role')
+      .populate('service', 'name description');
   
       res.status(200).json(updatedForm);
     } catch (error) {

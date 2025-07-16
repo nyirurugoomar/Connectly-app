@@ -76,7 +76,6 @@ const signin = async (req, res) => {
       expiresIn: "12h",
     });
 
-   
     const userResponse = {
       _id: user._id,
       fullName: user.fullName,
