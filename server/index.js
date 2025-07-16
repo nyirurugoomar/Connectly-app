@@ -4,7 +4,8 @@ const connectDB = require('./config/db');
 const userRoutes = require('./routes/user.routes');
 const cors = require('cors');
 const serviceRoutes = require('./routes/service.routes');
-const serviceFormRoutes = require('./routes/serviceForm.router');
+const serviceFormRoutes = require('./routes/serviceForm.routes');
+const userInfoRoutes = require('./routes/userInfo.routes');
 dotenv.config();
 connectDB();
 
@@ -19,6 +20,7 @@ app.use(cors({
 app.use('/api/users', userRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/service-forms', serviceFormRoutes);
+app.use('/api/user-info', userInfoRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
