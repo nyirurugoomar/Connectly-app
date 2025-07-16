@@ -95,15 +95,14 @@ function RequestService() {
         
         try {
             const serviceFormData = {
+                serviceId: serviceId,
                 ...formData,
                 date: new Date(formData.date).toISOString()
             };
 
             const response = await createServiceForm(serviceFormData);
             console.log('Service form submitted:', response);
-            
             // Show success message and redirect
-            alert('Service request submitted successfully!');
             navigate('/request-history'); // or wherever you want to redirect after submission
             
         } catch (error) {
