@@ -30,7 +30,7 @@ function SignIn() {
       login(response.user, response.token);
       
       setIsLoading(false);
-      navigate('/user-info') // Redirect to UserInfo page
+      navigate('/select-services') // Redirect to UserInfo page
     } catch (error) {
       console.error('Signin error:', error);
       setError(error.response?.data?.message || 'Sign in failed. Please try again.');

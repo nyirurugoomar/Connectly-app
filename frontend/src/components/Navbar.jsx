@@ -69,6 +69,12 @@ function Navbar() {
                   My Profile
                 </button>
                 <button
+                  onClick={() => navigate('/request-history')}
+                  className="hover:text-black text-left"
+                >
+                  Request History
+                </button>
+                <button
                   onClick={handleLogout}
                   className="hover:text-black text-left"
                 >
