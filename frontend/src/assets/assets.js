@@ -1,7 +1,7 @@
 import logo from './logo.png'
 import userProfile from './userProfile.png'
 import cleaner from './cleaner.png'
-import Delivery from './delivery.png'
+import Delivery from './Delivery.png'
 import Lawn from './lawn.png'
 
 export const assets = {
