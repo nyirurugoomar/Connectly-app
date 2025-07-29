@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:3000/api',
+    baseURL: 'https://connectly-app-oapq.onrender.com/api',
 });
 
 // Add request interceptor to include auth token
