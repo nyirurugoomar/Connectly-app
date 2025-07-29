@@ -5,7 +5,6 @@ import { createServiceForm } from '../api/serviceForm';
 import { useAuth } from '../context/AuthContext';
 
 function RequestService() {
-    const [preferredDate, setPreferredDate] = useState('');
     const [service, setService] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);

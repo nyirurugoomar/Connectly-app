@@ -36,9 +36,9 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/user-info" element={
-            // <ProtectedRoute>
+            <ProtectedRoute>
               <UserInfo />
-            // </ProtectedRoute>
+            </ProtectedRoute>
           } />
           <Route path="/select-services" element={
             // <ProtectedRoute>
@@ -46,19 +46,19 @@ function App() {
             // </ProtectedRoute>
           } />
           <Route path="/request-service/:serviceId" element={
-            // <ProtectedRoute>
+            <ProtectedRoute>
               <RequestService />
-            // </ProtectedRoute>
+            </ProtectedRoute>
           } />
           <Route path="/request-history" element={
-            // <ProtectedRoute>
+            <ProtectedRoute>
               <RequestHistory />
-            // </ProtectedRoute>
+            </ProtectedRoute>
           } />
           <Route path="/request-details/:requestId" element={
-            // <ProtectedRoute>
+            <ProtectedRoute>
               <RequestDetails />
-            // </ProtectedRoute>
+            </ProtectedRoute>
           } />
         </Routes>
         <Footer/>
