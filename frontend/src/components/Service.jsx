@@ -98,8 +98,8 @@ function Services() {
                     <button 
                       className={`w-full font-medium py-2 px-4 rounded-lg transition-colors duration-200 ${
                         isSelected
-                          ? 'bg-blue-500 hover:bg-blue-600 text-white' 
-                          : 'bg-blue-400 hover:bg-blue-500 text-black'
+                          ? 'bg-blue-500 hover:bg-blue-600 text-white font-extrabold' 
+                          : 'bg-blue-400 hover:bg-blue-500 text-white'
                       }`}
                       onClick={(e) => {
                         e.stopPropagation();

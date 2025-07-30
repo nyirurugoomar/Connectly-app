@@ -39,8 +39,8 @@ function RequestDetails() {
 
   if (loading) {
     return (
-      <div className='flex flex-col mx-10 md:mx-20'>
-        <div className='flex flex-col gap-4 mt-20'>
+      <div className='flex flex-col mx-6 md:mx-20 '>
+        <div className='flex flex-col gap-4'>
           <div className='flex flex-col'>
             <h1 className='text-[40px] text-black font-bold'>Request Details</h1>
             <p className='text-[14px] text-[#4A709C]'>

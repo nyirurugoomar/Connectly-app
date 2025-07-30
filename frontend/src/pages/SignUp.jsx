@@ -44,11 +44,12 @@ function SignUp() {
   }, [error])
 
   return (
-    <div className='flex flex-col items-center justify-center min-h-screen w-full px-4 sm:px-6 lg:px-8 py-8 gap-6 sm:gap-8 lg:gap-10 '>
+    <div className='flex flex-col items-center  md:h-screen h-screen w-full px-4 sm:px-6 lg:px-8 py-8 gap-6 sm:gap-8 lg:gap-10 '>
+        <div className='md:mt-20 mt-10 md:w-3/4 w-full md:h-[60%] h-[40%] rounded-md md:p-10 p-2'>
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black font-manrope text-center">
         Create your account
       </h1>
-      <form onSubmit={handleSignUp} className='flex flex-col gap-4 sm:gap-6 w-full max-w-md sm:max-w-lg lg:max-w-xl'>
+      <form onSubmit={handleSignUp} className='flex flex-col gap-4 sm:gap-6 w-full max-w-md sm:max-w-lg lg:max-w-xl md:mt-10 mt-5'>
         <div className='flex flex-col gap-2'>
          <label className="text-black text-sm sm:text-base">Full Name</label>
          <input 
@@ -91,6 +92,7 @@ function SignUp() {
         </button>
         <p className='text-[#5C738A] text-sm sm:text-base text-center'>Already have an account? <Link className='font-bold' to="/signin">Sign In</Link></p>
       </form>
+        </div>
     </div>
   )
 }

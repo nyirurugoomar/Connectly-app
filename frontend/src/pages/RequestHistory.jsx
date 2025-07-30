@@ -44,7 +44,7 @@ function RequestHistory() {
       <div className='flex flex-col mx-10 md:mx-20'>
         <div className='flex flex-col gap-4 mt-20'>
           <div className='flex flex-col'>
-            <h1 className='text-[40px] text-black font-bold'>Request History</h1>
+            <h1 className='md:text-[40px] text-[20px] text-black font-bold'>Request Histor</h1>
             <p className='text-[14px] text-[#4A709C]'>
               View your request history and track the status of your requests.
             </p>
@@ -60,9 +60,9 @@ function RequestHistory() {
 
   if (error) {
     return (
-      <div className='flex flex-col mx-10 md:mx-20'>
-        <div className='flex flex-col gap-4 mt-20'>
-          <div className='flex flex-col'>
+      <div className='flex '>
+        <div className='flex'>
+          <div className=''>
             <h1 className='text-[40px] text-black font-bold'>Request History</h1>
             <p className='text-[14px] text-[#4A709C]'>
               View your request history and track the status of your requests.
@@ -111,7 +111,7 @@ function RequestHistory() {
             requests.map((req) => (
               <div key={req._id} className='flex justify-between items-center  py-2'>
                 <div className='flex flex-col gap-2'>
-                  <p className='text-[18px] text-[#0D141C] font-medium'>
+                  <p className='md:text-[18px] text-[16px] text-[#0D141C] font-medium'>
                     Request Date: {
       req.date ? 
         new Date(req.date).toLocaleDateString('en-US', {
@@ -122,14 +122,14 @@ function RequestHistory() {
         'No date available'
     }
                   </p>
-                  <p className='text-[16px] text-[#4A709C] font-medium'>
+                  <p className='md:text-[16px] text-[14px] text-[#4A709C] font-medium'>
                     Service: {req.service ? req.service.name : 'Unknown Service'}
                   </p>
                   
                 </div>
                 <div>
                   <button
-                    className='bg-[#4A709C] text-white px-4 py-2 rounded-md cursor-pointer'
+                    className='bg-[#4A709C] text-white md:p-4 p-2 rounded-md cursor-pointer'
                     onClick={() => navigate(`/request-details/${req._id}`)}
                   >
                     View Details

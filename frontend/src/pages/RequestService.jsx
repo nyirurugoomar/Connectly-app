@@ -131,29 +131,29 @@ function RequestService() {
 
     return (
         <div className='flex flex-col mx-10 md:mx-20'>
-            <h1 className='text-[16px] text-[#4A709C] font-medium'>
+            <h1 className='md:text-[16px] text-[12px] text-[#4A709C] font-medium'>
                 Requests <span className='text-black font-medium'>/ {service?.name}</span>
             </h1>
 
-            <div className='flex flex-col gap-4 mt-20'>
+            <div className='flex flex-col gap-4 md:mt-14 mt-4'>
                 <div className='flex flex-col'>
-                    <h1 className='text-[40px] text-black font-bold'>{service?.name} Request</h1>
-                    <p className='text-[14px] text-[#4A709C]'>{service?.description}</p>
-                    <p className='text-[14px] text-[#4A709C]'>Please fill out the form below to submit your request. Your profile information will be pre-filled and read-only.</p>
+                    <h1 className='md:text-[40px] text-[20px] text-black font-bold'>{service?.name} Request</h1>
+                    <p className='md:text-[14px] text-[12px] text-[#4A709C]'>{service?.description}</p>
+                    <p className='md:text-[14px] text-[12px] text-[#4A709C]'>Please fill out the form below to submit your request. Your profile information will be pre-filled and read-only.</p>
                 </div>
 
                 <div className=''>
                     <form onSubmit={handleSubmit} className='flex flex-col gap-8'>
                         <div className='flex flex-col gap-4'>
-                           <h1 className='text-[24px] text-black font-medium'>Customer Information</h1> 
+                           <h1 className='md:text-[24px] text-[16px] text-black font-medium'>Customer Information</h1> 
                            <div className='flex flex-col gap-2'>
-                                <label htmlFor="name" className='text-[16px] text-black font-medium'>Name *</label>
+                                <label htmlFor="name" className='md:text-[16px] text-[12px] text-black font-medium'>Name *</label>
                                 <input 
                                 type="text" 
                                 id="name" 
                                 value={formData.name}
                                 onChange={handleInputChange}
-                                className='w-[448px] bg-[#E7E7E7] p-2 border-none rounded-md outline-none'
+                                className='md:w-[448px] w-[300px] bg-[#E7E7E7] p-2 border-none rounded-md outline-none'
                                 placeholder='Enter your name'
                                 required
                                 />
@@ -165,7 +165,7 @@ function RequestService() {
                                 id="email" 
                                 value={formData.email}
                                 onChange={handleInputChange}
-                                className='w-[448px] bg-[#E7E7E7] p-2 border-none rounded-md outline-none'
+                                className='md:w-[448px] w-[300px] bg-[#E7E7E7] p-2 border-none rounded-md outline-none'
                                 placeholder='Enter your email'
                                 required
                                 />
@@ -177,7 +177,7 @@ function RequestService() {
                                 id="phone" 
                                 value={formData.phone}
                                 onChange={handleInputChange}
-                                className='w-[448px] bg-[#E7E7E7] p-2 border-none rounded-md outline-none'
+                                className='md:w-[448px] w-[300px] bg-[#E7E7E7] p-2 border-none rounded-md outline-none'
                                 placeholder='Enter your phone number'
                                 required
                                 />
@@ -192,7 +192,7 @@ function RequestService() {
                                 id="address" 
                                 value={formData.address}
                                 onChange={handleInputChange}
-                                className='w-[448px] bg-[#E7E7E7] p-2 border-none rounded-md outline-none'
+                                className='md:w-[448px] w-[300px] bg-[#E7E7E7] p-2 border-none rounded-md outline-none'
                                 placeholder='Enter your address'
                                 required
                                 />
@@ -204,7 +204,7 @@ function RequestService() {
                                 id="city" 
                                 value={formData.city}
                                 onChange={handleInputChange}
-                                className='w-[448px] bg-[#E7E7E7] p-2 border-none rounded-md outline-none'
+                                className='md:w-[448px] w-[300px] bg-[#E7E7E7] p-2 border-none rounded-md outline-none'
                                 placeholder='Enter your city'
                                 required
                                 />
@@ -222,7 +222,7 @@ function RequestService() {
                                 value={formData.date}
                                 onChange={handleInputChange}
                                 min={today}
-                                className='w-[448px] bg-[#E7E7E7] p-2 border-none rounded-md outline-none'
+                                className='md:w-[448px] w-[300px] bg-[#E7E7E7] p-2 border-none rounded-md outline-none'
                                 required
                                 />
                             </div>
@@ -233,7 +233,7 @@ function RequestService() {
                             id="additionalNotes" 
                             value={formData.additionalNotes}
                             onChange={handleInputChange}
-                            className='w-[448px] h-[228px] bg-[#E7E7E7] p-2 border-none rounded-md outline-none'
+                            className='md:w-[448px] w-[300px] h-[228px] bg-[#E7E7E7] p-2 border-none rounded-md outline-none'
                             placeholder='Enter your additional notes'
                             required
                             />

@@ -229,7 +229,8 @@ function Navbar() {
                     </button>
                   </li>
                   {isAuthenticated && (
-                    <li>
+                    <div className="flex flex-col gap-2">
+                      <li>
                       <button
                         onClick={() => handleNavigation('/my-profile')}
                         className="text-black text-lg font-medium w-full text-left"
@@ -237,6 +238,18 @@ function Navbar() {
                         My Profile
                       </button>
                     </li>
+                    <li>
+                      <button
+                        onClick={() => handleNavigation('/request-history')}
+                        className="text-black text-lg font-medium w-full text-left"
+                      >
+                        Request History
+                      </button>
+                    </li>
+                    
+                    </div>
+                    
+                    
                   )}
                 </ul>
               </nav>
